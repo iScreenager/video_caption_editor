@@ -3,11 +3,12 @@ import { CaptionItem } from "../constants/CaptionItem";
 import { parseTimeString } from "../utils/parseTimeString";
 import { getFormattedDate } from "../utils/getFormatTime";
 import { CaptionsBox } from "./CaptionBox";
+import TimerInputBox from "./TimerInputBox";
 
 const initialState = {
   captionText: "",
-  startTime: "",
-  endTime: "",
+  startTime: "00:00:00",
+  endTime: "00:00:00",
 };
 
 type Action =
@@ -88,7 +89,7 @@ export const CaptionInput = ({
 
   const handleAddCaption = () => {
     if (!validateInputs()) return;
-
+    
     const start = parseTimeString(state.startTime);
     const end = parseTimeString(state.endTime);
 
@@ -155,27 +156,21 @@ export const CaptionInput = ({
           }
           className="border border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-4 sm:gap-6">
-          <div className="flex items-center gap-4 sm:w-1/2 w-full">
-            <label className="text-sm text-gray-700">Start:</label>
-            <input
-              type="text"
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <TimerInputBox
+              label="Start"
               value={state.startTime}
-              placeholder="hh:mm:ss"
-              onChange={(e) =>
-                dispatch({ type: "Set_Start_Time", payload: e.target.value })
+              onChange={(value) =>
+                dispatch({ type: "Set_Start_Time", payload: value })
               }
-              className="border p-2 rounded-md md:w-1/2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <label className="text-sm text-gray-700">End:</label>
-            <input
-              type="text"
+            <TimerInputBox
+              label="End"
               value={state.endTime}
-              placeholder="hh:mm:ss"
-              onChange={(e) =>
-                dispatch({ type: "Set_End_Time", payload: e.target.value })
+              onChange={(value) =>
+                dispatch({ type: "Set_End_Time", payload: value })
               }
-              className="border p-2 rounded-md md:w-1/2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <button

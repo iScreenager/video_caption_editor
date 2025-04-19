@@ -7,10 +7,5 @@ export const getFormattedDate = (time: number) => {
   const mm = ("0" + mins).slice(-2);
   const ss = ("0" + secs).slice(-2);
 
-  if (hours > 0) {
-    return `${hh}:${mm}:${ss}`;
-  }
-  return `${mm}:${ss}`;
+  return `${hh}:${mm}:${ss}`;
 };
-
-

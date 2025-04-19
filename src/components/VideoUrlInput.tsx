@@ -27,11 +27,11 @@ export const VideoUrlInput = ({ setVideoURL }: VideoUrlInputProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-8 w-full mx-auto">
+    <div className="flex flex-col items-center space-y-8 w-full ">
       <form
-        className="flex flex-col md:flex-row items-start w-full gap-2"
+        className="flex flex-row  items-start justify-center w-full gap-2"
         onSubmit={handleSubmit}>
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col flex-1">
           <input
             value={inputValue}
             onChange={(e) => {
@@ -52,7 +52,7 @@ export const VideoUrlInput = ({ setVideoURL }: VideoUrlInputProps) => {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 whitespace-nowrap">
+          className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 ">
           Upload
         </button>
       </form>
